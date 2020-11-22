@@ -1,16 +1,26 @@
 #!/bin/bash
 
-DOTFILES_DIR=${HOME}/dotfiles
-DOTFILES=$(find)
+set -u
+cd ~/dotfiles
+# 実行場所のディレクトリを取得
+THIS_DIR=$(cd $(dirname $0); pwd)
 
-for f in ${DOTFILES}
-do
-  if [ `echo $f | grep ".git"` ]; then
-    continue
-  elif [ `echo $f | grep "README.md"` ]; then
-    continue
-  elif [ `echo $f | grep "setup.sh"` ]; then
-    continue
-  fi
-  ln -snfv $f 
+cd $THIS_DIR
+
+echo "start setup..."
+for f in .??*; do
+    [ "$f" = ".git" ] && continue
+    [ "$f" = "README.md" ] && continue
+    [ "$f" = "setup.sh" ] && continue
+
+    ln -snfv ~/dotfiles/"$f" ~/
 done
+
+cat << END
+
+**************************************************
+DOTFILES SETUP FINISHED! bye.
+**************************************************
+
+END
+
