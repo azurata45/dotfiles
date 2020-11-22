@@ -1,0 +1,14 @@
+[core]
+  autocrlf = input
+
+[user]
+  name = "azurata"
+  email = "azurata@vivaldi.net"
+#  signinkey = 
+
+#[gpg]
+#  program = gpg
+#
+#[commit]
+#  gpgsign = true
+
